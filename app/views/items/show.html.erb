@@ -20,5 +20,15 @@
   <%= @item.category %>
 </p>
 
+<p>
+  <strong>Popularity:</strong>
+  <%= @item.popularity %>
+</p>
+
+<p>
+  <strong>Date Stocked:</strong>
+  <%= @item.date_stocked %>
+</p>
+
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

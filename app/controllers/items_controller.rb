@@ -19,9 +19,16 @@ class ItemsController < ApplicationController
   def edit
   end
 
+  def saveItem
+    # @i = session[:item_id]
+    # @item_id = params[:item_id]
+    # session[:item_id] = @item_id
+  end
+
   # POST /items or /items.json
   def create
     @item = Item.new(item_params)
+    # session[:item_id] = @item.id
 
     respond_to do |format|
       if @item.save
@@ -64,6 +71,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:title, :price, :image, :category)
+      params.require(:item).permit(:title, :price, :image, :category, :popularity, :date_stocked)
     end
 end

@@ -8,7 +8,7 @@
 
 <div>
     <% @makeRow = true %>
-    <% @items.filterByNewins.each do |item| %>
+    <% @items.RecentlyStocked.each do |item| %>
     
         <%= image_tag item.image, :width => '200', class: "item-card-left" %>
         <%= item.title %>

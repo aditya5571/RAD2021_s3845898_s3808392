@@ -1,0 +1,2 @@
+class Newuser < ApplicationRecord
+end

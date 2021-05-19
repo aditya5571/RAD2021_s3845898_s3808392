@@ -60,7 +60,17 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "firstApp_#{Rails.env}"
-  config.action_mailer.perform_caching = false
+  # config.action_mailer.perform_caching = false
+  # config.action_mailer.default_url_options = { host: 'you-domain.com' }
+  # config.action_mailer.delivery_method     = :smtp
+  # config.action_mailer.smtp_settings       = {
+  #   authentication: :plain,
+  #   address:        'smtp.sendgrid.net',
+  #   port:           587,
+  #   user_name:      don,
+  #   password:       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,
+  #   domain:         'you-domain.com'
+  # }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

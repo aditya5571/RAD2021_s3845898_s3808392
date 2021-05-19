@@ -9,7 +9,9 @@
       <th>Price</th>
       <th>Image</th>
       <th>Category</th>
-      <th colspan="3"></th>
+      <th>Popularity</th>
+      <th>Date Stocked</th>
+      <th colspan="6"></th>
     </tr>
   </thead>
 
@@ -20,6 +22,8 @@
         <td><%= item.price %></td>
         <td><%= image_tag(item.image) %></td>
         <td><%= item.category %></td>
+        <td><%= item.popularity %></td>
+        <td><%= item.date_stocked %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
