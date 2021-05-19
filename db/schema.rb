@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20210515111555) do
     t.string "image"
     t.string "category"
     t.string "popularity"
-    t.date "date_stocked"
+    t.string "date_stocked"
   end
 
   create_table "newusers", force: :cascade do |t|
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20210515111555) do
 
   create_table "saveds", force: :cascade do |t|
     t.integer "item_id"
-    t.integer "user_id", null: true # (Must pass actual user id later, and make it false)
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_saveds_on_item_id"
