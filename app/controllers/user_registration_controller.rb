@@ -3,13 +3,19 @@ class UserRegistrationController < ApplicationController
         @user = User.new
     end
     def create
-        @user = User.new(user_params)
-        if @user.save
-            session[:current_user] = @user.id
-            redirect_to root_path, notice:"Sign Up successful"
+        binding.pry
+        if User.find_by(email: params[:user][:email]).present?
+            redirect_to login_path, notice:"User with this email already exists. Please log in."
         else
-        
-            render :new
+            @user = User.new(user_params)
+            binding.pry
+            if @user.save
+                session[:current_user] = @user.id
+                redirect_to root_path, notice:"Sign Up successful"
+            else
+            
+                render :new
+            end
         end
     end
     private

@@ -1,11 +1,13 @@
 class UserLoginController < ApplicationController
 
 def new
+
 end
 
 def create
     user = User.find_by(email: params[:email])
     if user.present? && user.authenticate(params[:password])
+        binding.pry
         session[:current_user] = user.id
         redirect_to root_path, notice: "Logged in successful"
     else
@@ -33,8 +35,8 @@ def omniauth
         u.password_confirmation = password
     end
     
-    binding.pry
     session[:current_user] = user.id
+    binding.pry
     redirect_to root_path, notice: "Logged in successful"
     
 end
