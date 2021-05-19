@@ -29,7 +29,8 @@ def omniauth
         if(request.env['omniauth.auth'].info.email != nil)
            u.email = request.env['omniauth.auth'].info.email
         end
-        u.password = SecureRandom.hex(15)
+        u.password = password
+        u.password_confirmation = password
     end
     
     binding.pry
