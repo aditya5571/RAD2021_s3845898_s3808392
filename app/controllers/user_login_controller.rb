@@ -5,6 +5,7 @@ def new
 end
 
 def create
+    binding.pry
     user = User.find_by(email: params[:email])
     if user.present? && user.authenticate(params[:password])
         binding.pry

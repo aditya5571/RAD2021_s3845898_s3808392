@@ -10,7 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_19_141322) do
+ActiveRecord::Schema.define(version: 2021_05_20_063920) do
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "title"
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image"
+    t.string "category"
+    t.string "popularity"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "company"
+    t.string "title"
+    t.string "size"
+    t.decimal "price"
+    t.string "imageString"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "category"
+    t.string "description"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "firstName"
