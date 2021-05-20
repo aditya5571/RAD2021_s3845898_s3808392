@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   
   get "/auth/twitter/callback", to: "user_login#omniauth"
   
+  get "newsletter", to: "newsletter#subscribe"
+  get "/newsletter/subscribe"
+  
   
   
   root to: "main#index"

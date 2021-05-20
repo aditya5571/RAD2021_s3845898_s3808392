@@ -1,0 +1,43 @@
+<!-- Start Footer -->
+<footer class="bg-dark" id="tempaltemo_footer">
+    <div class="container">
+        <div class="row text-light mb-4">
+            <div class="col-12 mb-3">
+                <div class="w-100 my-3 border-top border-light"></div>
+            </div>
+            <div class="col-auto">
+                <label class="sr-only" for="subscribeEmail">Email address</label>
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control border-light" id="subscribeEmail" placeholder="Email address">
+                    <div id="subscribe_id" class="input-group-text btn-success text-light" onclick="subscribe()">Subscribe</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer -->
+
+
+
+<script>
+    function subscribe() {
+        debugger;
+        var email = $('#subscribeEmail').val();
+        var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if ((email !== "") && email.match(emailRegex)) {
+            $.ajax({
+                url: '/newsletter/subscribe',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    'email' : email
+                },
+                success: function(res) {
+                    alert("Successfully subscribed");
+                }
+            });
+        }
+    }
+</script>
+<%# <script src="javascripts/custom.js"></script> %>
+<!-- End Script -->
