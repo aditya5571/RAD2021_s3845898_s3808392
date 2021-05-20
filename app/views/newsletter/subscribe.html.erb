@@ -21,7 +21,6 @@
 
 <script>
     function subscribe() {
-        debugger;
         var email = $('#subscribeEmail').val();
         var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if ((email !== "") && email.match(emailRegex)) {
