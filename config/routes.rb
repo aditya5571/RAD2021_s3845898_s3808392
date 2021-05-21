@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
 
   resources :carts
-  resources :products
+  resources :products 
   get "sign_up", to: "user_registration#new"
   post "sign_up", to: "user_registration#create"
   
@@ -12,10 +12,9 @@ Rails.application.routes.draw do
   
   get "/auth/twitter/callback", to: "user_login#omniauth"
   
-  get "newsletter", to: "newsletter#subscribe"
-  get "/newsletter/subscribe"
+  get "/men", to: "products#allNewIns"
   
-  
+  post "products/:id", to: "products#editList" 
   
   root to: "main#index"
   

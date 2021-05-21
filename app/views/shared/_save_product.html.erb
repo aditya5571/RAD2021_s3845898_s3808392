@@ -1,0 +1,6 @@
+<% if cookies[:savedList] and cookies[:savedList].split(" ").include? (@product.id.to_s) %>
+      <%= button_to "Unsave",:remote=> "true",:method=> "unsave" %>
+
+<% else %>
+  <%= button_to "Save",:remote=> "true", :method=> "save"%>
+<% end %>

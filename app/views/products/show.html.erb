@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag(@product.imageString, class: "img-fluid") %>
 <p>
   <strong>Company:</strong>
   <%= @product.company %>
@@ -8,6 +9,10 @@
 <p>
   <strong>Title:</strong>
   <%= @product.title %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
 </p>
 
 <p>
@@ -19,11 +24,9 @@
   <strong>Price:</strong>
   <%= @product.price %>
 </p>
+<div id="div_id">
+ <%= render partial: "shared/save_product" %>
+ </div>
 
-<p>
-  <strong>Imagestring:</strong>
-  <%= @product.imageString %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Edit', edit_product_path(@product) %> 
 <%= link_to 'Back', products_path %>

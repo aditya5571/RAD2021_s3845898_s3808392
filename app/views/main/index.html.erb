@@ -9,5 +9,9 @@
  <% end %>
  
  <%= button_to "connect twitter", "/auth/twitter", method: :post, class:"btn btn-primary"%>
+ 
+<%= button_tag "save", {id: "save-button", onClick: "myFunction('save-button')", class: " btn btn-primary"} %>
+
+<h3><%= cookies[:save] %> Hi</h3>
 
  
