@@ -1,4 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<h1>Carts#show</h1>
+ <% @cart.cart_items.each do |cart_item| %>
+    <li>Item: <%= cart_item.product.title %>/ Price: <%= number_to_currency(cart_item.product.price) %>/ Quantity: <%= cart_item.quantity %>/ Total Price: <%= number_to_currency(cart_item.total_price) %>
+    # See lineItem section below for explanation of line_item links
+    <ul>
+      <li>
+        <%= link_to "Add one", cart_item_add_path(:id => cart_item), method: :post %>
+        <%= link_to "Reduce one", cart_item_reduce_path(:id => cart_item), method: :post %>
+      </li>
+      <li>
+        <%= link_to "Remove item", cart_item_remove_path(cart_item), method: :delete %>
+      </li>
+    </ul>
+    #
+  <% end %>

@@ -10,23 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_20_063920) do
+ActiveRecord::Schema.define(version: 2021_05_21_173538) do
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "size_id"
+    t.integer "colour_id"
+    t.integer "quantity"
+    t.integer "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
-  create_table "items", force: :cascade do |t|
-    t.string "title"
-    t.decimal "price"
+  create_table "colours", force: :cascade do |t|
+    t.string "colour_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
-    t.string "category"
-    t.string "popularity"
   end
 
   create_table "products", force: :cascade do |t|
@@ -39,6 +44,12 @@ ActiveRecord::Schema.define(version: 2021_05_20_063920) do
     t.datetime "updated_at", null: false
     t.string "category"
     t.string "description"
+  end
+
+  create_table "sizes", force: :cascade do |t|
+    t.string "size_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

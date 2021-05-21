@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
 
-  resources :carts
+  get '/cart', to: "carts#show"
   resources :products 
   get "sign_up", to: "user_registration#new"
   post "sign_up", to: "user_registration#create"
@@ -15,6 +15,12 @@ Rails.application.routes.draw do
   get "/men", to: "products#allNewIns"
   
   post "products/:id", to: "products#editList" 
+  
+  post "cart_items", to: "cart_items#create"
+
+  post "cart_items/:id/add", to: "cart_items#add", as: "cart_item_add"
+  post "cart_items/:id/reduce", to: "cart_items#reduce", as: "cart_item_reduce"
+  delete "cart_items/:id", to: "cart_items#destroy", as: "cart_item_remove"
   
   root to: "main#index"
   

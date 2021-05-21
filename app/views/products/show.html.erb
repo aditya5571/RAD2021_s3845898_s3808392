@@ -30,3 +30,22 @@
 
 <%= link_to 'Edit', edit_product_path(@product) %> 
 <%= link_to 'Back', products_path %>
+<%= form_with local:true, url: cart_items_path(:product_id => @product.id) do |form| %>
+<div class="mb-3">
+    <%= form.label :size %>
+    <%= form.text_field :size, class: "form-control", placeholder: "steve@apple.com" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :colour %>
+    <%= form.text_field :colour, class: "form-control", placeholder: "steve@apple.com" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity, class: "form-control", placeholder: "steve@apple.com" %>
+  </div>
+  <div class="mb-3">
+    <%= form.submit "Sign In", class: "btn btn-primary" %>
+  </div>
+  
+  <%end%>
+

@@ -11,6 +11,7 @@ class UserRegistrationController < ApplicationController
             binding.pry
             if @user.save
                 session[:current_user] = @user.id
+                Cart.create({user_id: @user.id})
                 redirect_to root_path, notice:"Sign Up successful"
             else
             
