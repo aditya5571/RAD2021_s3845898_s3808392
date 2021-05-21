@@ -13,7 +13,7 @@
   </head>
 
   <body>
-      <div class="container">
+    <div class="container">
     <%= render partial: "shared/flash" %>
     <%= yield %>
   </div>
@@ -39,10 +39,30 @@
       <li class="nav-item">
         <a class="nav-link text-white" href="#">Kid</a>
       </li>
-      
-    </form>
+    </ul>
   </div>
-</nav>
-</header>
+  </nav>
+  </header>
+  
+  <footer class="page-footer font-small blue pt-4">
+    <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid text-center text-md-left">
+      <div class="row" style="width: 100%">
+        <div class="col-md-3 mt-md-0 mt-3">
+          <a href="#" style="color: white">Home</a>
+        </div>
+        <div class="col-md-3 mt-md-0 mt-3">
+          <a href="#" style="color: white">Scan</a>
+        </div>
+        <div class="col-md-3 mb-md-0 mb-3">
+          <a href="#" style="color: white">Saved</a>
+        </div>
+        <div class="col-md-3 mb-md-0 mb-3">
+          <a href="#" style="color: white">Account</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   </body>
 </html>
