@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
 
     def isNotTwitterAccount
-        :provider != "twitter"
+        provider != "twitter"
     end
 end
 
