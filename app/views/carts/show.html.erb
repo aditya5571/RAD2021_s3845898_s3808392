@@ -25,10 +25,12 @@
             <td><%= link_to "Add one", cart_item_add_path(:id => cart_item), method: :post %></td>
             <td><%= link_to "Reduce one", cart_item_reduce_path(:id => cart_item), method: :post %></td>
             <td><%= link_to "Remove item", cart_item_remove_path(cart_item), method: :delete %></td>
-            <td><%= @cart.sub_total %></td>
+            <td><%= number_to_currency(cart_item.total_price) %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+    
+    <h4>Cart Total: $<%= @cart.sub_total %></h4>
   </div>
 </div>
