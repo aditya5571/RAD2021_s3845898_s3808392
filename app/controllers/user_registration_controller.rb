@@ -7,12 +7,10 @@ class UserRegistrationController < ApplicationController
         end
     end
     def create
-        binding.pry
         if User.find_by(email: params[:user][:email]).present?
             redirect_to login_path, notice:"User with this email already exists. Please log in."
         else
             @user = User.new(user_params)
-            binding.pry
             if @user.save
                 session[:current_user] = @user.id
                 Cart.create({user_id: @user.id})

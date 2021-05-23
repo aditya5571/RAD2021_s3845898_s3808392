@@ -1,6 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<%= image_tag(@product.imageString, class: "img-fluid") %>
+
+<div class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag(@product.imageString, class: "img-fluid") %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag(@product.imageString, class: "img-fluid") %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag(@product.imageString, class: "img-fluid") %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag(@product.imageString, class: "img-fluid") %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag(@product.imageString, class: "img-fluid") %>
+    </div>
+  </div>
+</div>
+
 <p>
   <strong>Company:</strong>
   <%= @product.company %>
