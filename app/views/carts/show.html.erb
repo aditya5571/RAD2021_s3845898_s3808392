@@ -11,5 +11,7 @@
         <%= link_to "Remove item", cart_item_remove_path(cart_item), method: :delete %>
       </li>
     </ul>
+    
+    <h3>Total: <%= @cart.sub_total%></h3>
     #
   <% end %>

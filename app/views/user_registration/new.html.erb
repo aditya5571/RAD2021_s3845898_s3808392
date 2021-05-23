@@ -25,7 +25,7 @@
     <%= form.label :password %>
     <%= form.password_field :password, placeholder: "password" %>
     </div>
-    <divclass="mb-3">
+    <div class="mb-3">
     <%= form.label :password_confirmation %>
     <%= form.password_field :password_confirmation, placeholder: "password" %>
     </div>
@@ -33,3 +33,5 @@
     <%= form.submit "Sign Up", class: "btn btn-primary" %>
     </div>
 <% end %>
+
+<%= link_to "Already a user? Log in", login_path %> 

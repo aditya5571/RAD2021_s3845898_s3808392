@@ -2,12 +2,12 @@
 
 one:
   product_id: 1
-  size_id: 1
-  colour_id: 1
+  colour: MyString
+  size: MyString
   quantity: 1
 
 two:
   product_id: 1
-  size_id: 1
-  colour_id: 1
+  colour: MyString
+  size: MyString
   quantity: 1

@@ -1,11 +1,12 @@
 class CartItemsController < ApplicationController
     
     def create
+        if session[:current_user]
         selected_product = Product.find_by(id: params[:product_id])
         current_cart = Cart.find_by(user_id: session[:current_user])
         
         if current_cart.products.include?(selected_product)
-            redirect_to "products/"+params[:product_id]
+            redirect_to "/products/"+params[:product_id]
         else
             @cart_item = CartItem.new
             @cart_item.cart = current_cart
@@ -17,6 +18,11 @@ class CartItemsController < ApplicationController
             @cart_item.save
             redirect_to "/cart"
         end
+    else
+        redirect_to login_path,  notice: "Please Login To Continue"
+    end
+    
+    
     
 end
 

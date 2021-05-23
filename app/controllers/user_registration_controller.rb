@@ -1,6 +1,10 @@
 class UserRegistrationController < ApplicationController
     def new
-        @user = User.new
+        if session[:current_user]
+            redirect_to account_path
+        else
+            @user = User.new
+        end
     end
     def create
         binding.pry

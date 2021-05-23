@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy]
   
-  @category
+  
   
   # GET /products or /products.json
   def index
@@ -11,23 +11,47 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
+    @availableSizes = ProductVariant.where(product_id: @product.id).distinct("size").pluck("size")
+    @availableColours = ProductVariant.where(product_id: @product.id, size: @availableSizes[0]).distinct("colour").pluck("colour")
+    @availableQuantity =  ProductVariant.where(product_id: @product.id, size: @availableSizes[0], colour: @availableColours[0]).pluck("quantity")
   end
   
-  def editList
-    if params[:method] == "save"
-      if (cookies[:savedList])
+  def setAvailableColours
+  
+    set_product
+    @availableColours =  ProductVariant.where(product_id: @product.id, size: params[:size]).distinct("colour").pluck("colour")
+    respond_to do |format|
+      format.html
+      format.json {render json: @availableColours}
+    end
+  end
+  
+  def setAvailableQuantity
+    set_product
+    @availableQuantity =  ProductVariant.where(product_id: @product.id, size: params[:size], colour: params[:colour]).pluck("quantity")
+    respond_to do |format|
+      format.html
+      format.json {render json: @availableQuantity}
+    end
+  end
+  
+  
+  def save
+    if (cookies[:savedList])
         cookies[:savedList] += " " + params[:id]
-      else
+    else
         cookies[:savedList] = params[:id]
-      end
-    elsif params[:method] == "unsave"
+    end
+      redirect_back(fallback_location: root_path)
+  end
+  
+  def unsave
+
       list = cookies[:savedList].split(" ")
       list.delete(params[:id])
       cookies[:savedList] = list.join(" ")
-      # format.js
-    end
     set_product
-    render :show
+    redirect_back(fallback_location: root_path)
     
   
   end
@@ -60,20 +84,7 @@ class ProductsController < ApplicationController
     end
   end
   
-  # POST /products/1
-  def saveToSaveList
-    if(product_params[:commit] == "Like")
-      cookies[:savedProducts] = cookies[:savedProducts]+" "+params[:id]
-      @savedItems = cookies[:savedProducts]
-    elsif (product_params[:commit] == "Add To Cart")
-      User.find_by(id: session[:current_user]).cart.add(@product)
-    end
-  end
-  
-  def save
-    cookies[:savedProducts] = cookies[:savedProducts]+" "+params[:id]
-    @savedList = cookies[:savedProducts].split(" ")
-  end
+
   
   
 
@@ -106,18 +117,21 @@ class ProductsController < ApplicationController
   def allWomen
     @category = "Women"
     @products = Product.where(category: "Women")
+    render "products/index"
   end
   
   def allMen
     @category = "Men"
 
     @products = Product.where(category: "Men")
+    render "products/index"
   end
   
   def allKids
     @category = "Kids"
 
     @products = Product.where(category: "Kids")
+    render "products/index"
   end
   
   def allNewIns
@@ -127,6 +141,11 @@ class ProductsController < ApplicationController
     render "products/index"
   end
   
+  def allSavedItems
+    @category = "Saved Items"
+    @products = Product.where(id: cookies[:savedList].split(" ").map(&:to_i))
+  render "products/index"
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
-    
-     protect_from_forgery with: :null_session
+
      
+     def account
+         binding.pry
+         @user = User.find_by(id: session[:current_user])
+     end
 end

@@ -1,0 +1,8 @@
+<h4>Hello, </h4>
+<% if @user %>
+<h2><%= @user.firstName %></h2>
+<%= button_to "Logout", logout_path, method: :delete %>
+<% else %>
+<%= link_to "New to us? Sign up", sign_up_path %> 
+<%= link_to "Already a user? Log in", login_path %> 
+<% end %>

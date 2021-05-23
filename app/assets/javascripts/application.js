@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
@@ -18,13 +17,27 @@
 //= require jquery_ujs
 //= require_self
 
-/*global $*/
+/*global $ */
+function subscribe() {
+        var email = $('#subscribeEmail').val();
+        var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if ((email !== "") && email.match(emailRegex)) {
+            $.ajax({
+                url: '/newsletter/subscribe',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    'email' : email
+                },
+                success: function(res) {
+                    alert("Successfully subscribed");
+                }
+            });
+        }
+        
+        else{
+            alert("Invalid email address.")
+        }
+    }
 
-function myFunction(id){
-    var d = new Date();
-    d.setTime(d.getTime() + (5*24*60*60*1000));
-    var expires = "expires="+ d.toUTCString();
-    document.cookie = "save=true; expires="+expires+ "path=/";
-    document.getElementById(id).innerHTML = "Unsave";
-    console.log(document.cookie)
-};
+  

@@ -1,7 +1,7 @@
 <h1>Sign In</h1>
 
 
-<%= form_with local:true, url: login_path do |form| %>
+<%= form_with url: login_path do |form| %>
 
   <div class="mb-3">
     <%= form.label :email %>
@@ -16,4 +16,9 @@
   <div class="mb-3">
     <%= form.submit "Sign In", class: "btn btn-primary" %>
   </div>
+  
+   <%= button_to "Login via Twitter", "/auth/twitter", method: :post, class:"btn btn-primary"%>
+   <br>
+   
+   <%= link_to "New to us? Sign up", sign_up_path %> 
 <% end %>
