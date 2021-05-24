@@ -1,4 +1,5 @@
 <%= link_to product do %>
 <%= image_tag(product.imageString, class: "img-fluid") %>
 <h3><%= product.title %></h3>
+<h3>$<%= product.price %></h3>
 <% end %>
