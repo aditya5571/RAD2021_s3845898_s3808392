@@ -2,6 +2,9 @@
 <% product=Product.order("RANDOM()").first %>
 <%= render partial: "shared/product_card", locals: {product: product} %>
 <%= render partial: "shared/save_product", locals: {product: product} %>
+
+<%= render partial: "shared/collections_card" %>
+
 <div class="container">
     <div class="row text-light mb-4">
         <div class="col-12 mb-3">
