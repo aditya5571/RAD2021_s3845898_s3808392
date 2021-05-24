@@ -39,7 +39,8 @@ class ProductsController < ApplicationController
   def save
     if (cookies[:savedList])
         cookies[:savedList] += " " + params[:id]
-        c
+        product = Product.find(params[:id])
+        product.increasePopularity
     else
         cookies[:savedList] = params[:id]
     end

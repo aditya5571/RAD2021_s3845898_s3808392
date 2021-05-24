@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   
   get "/newsletter/subscribe"
   
+  post "/cart/checkout", to: "carts#checkOut", as: "checkout"
+  
   root to: "main#index"
   
 end

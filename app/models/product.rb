@@ -6,7 +6,6 @@ class Product < ApplicationRecord
    end
    
    def decreasePopularity
-       binding.pry
        if self.popularity > 1
            self.popularity -= 1
            self.save       

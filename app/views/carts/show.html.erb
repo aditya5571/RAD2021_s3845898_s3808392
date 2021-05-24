@@ -2,6 +2,10 @@
   <div class="col-md-10 mt-md-0 mt-3 mx-auto">
     <h2>Your shopping cart</h2>
     
+    <% if @cart.cart_items.empty? %>
+    <br>
+   <div class="text-center"> <p>Go Get Shopping ! :) </p></div
+    <% else %>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -34,3 +38,9 @@
     <h4>Cart Total: $<%= @cart.sub_total %></h4>
   </div>
 </div>
+
+<div>
+  <%= button_to "Check Out",checkout_path, method: :post, class: "btn btn-block bg-dark text-light" %>
+</div>
+
+<% end %>

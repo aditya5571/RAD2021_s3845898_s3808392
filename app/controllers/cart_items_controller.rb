@@ -16,11 +16,12 @@ class CartItemsController < ApplicationController
 
             @cart_item.quantity = params[:quantity]
             @cart_item.save
-            product = Product.find(params[:product_id])
-            product.increasePopularity
+            selected_product.increasePopularity
             redirect_to "/cart"
         end
     else
+        session[:previous_path] =  request.env['PATH_INFO']
+        session[:previous_params] = params
         redirect_to login_path,  notice: "Please Login To Continue"
     end
     
@@ -31,7 +32,6 @@ end
 def destroy
     @cart_item = CartItem.find(params[:id])
     product = Product.find(@cart_item.product_id)
-    binding.pry
     product.decreasePopularity
     @cart_item.destroy
     
