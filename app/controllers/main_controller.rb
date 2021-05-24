@@ -4,5 +4,7 @@ class MainController < ApplicationController
             @user = User.find_by(id: session[:current_user])
             
         end
+        
+        @products = Product.where("popularity > ?", 50)
     end
 end

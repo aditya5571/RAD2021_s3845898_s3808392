@@ -23,6 +23,8 @@ def create
             @cart_item.quantity = session[:previous_params]["quantity"]
             @cart_item.save
             product.increasePopularity
+            session.delete(:previous_params)
+            session.delete(:previous_path)
             redirect_to "/cart"
         else
             redirect_to root_path, notice: "Log in successful"

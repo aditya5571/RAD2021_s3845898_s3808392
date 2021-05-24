@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Product.destroy_all
-products = Product.create([ {id: 1, company: "1", title: "Yoga outfit", popularity: 4, price: "40.00", imageString: "shop_08.jpg", category: "women", description: "this is product 1"}, 
-                            {id: 2, company: "2", title: "Top", popularity: 10, price: "35.55", imageString: "shop_09.jpg", category: "women", description: "this is product 2"},
-                            {id: 3, company: "3", title: "Jeans", popularity: 13, price: "59.99", imageString: "shop_10.jpg", category: "men", description: "jeans is product 3"},
-                            {id: 4, company: "4", title: "Jacket", popularity: 19, price: "129.99", imageString: "shop_11.jpg", category: "men", description: "jacket is product 4"},
-                            {id: 5, company: "5", title: "Skirt", popularity: 7, price: "16.99", imageString: "shop_12.jpg", category: "kids", description: "skirt is product 5"}])
+products = Product.create([ {id: 1, company: "1", title: "Yoga outfit", popularity: 61, price: "40.00", imageString: "shop_08.jpg", category: "women", description: "this is product 1"}, 
+                            {id: 2, company: "2", title: "Top", popularity: 22, price: "35.55", imageString: "shop_09.jpg", category: "women", description: "this is product 2"},
+                            {id: 3, company: "3", title: "Jeans", popularity: 38, price: "59.99", imageString: "shop_10.jpg", category: "men", description: "jeans is product 3"},
+                            {id: 4, company: "4", title: "Jacket", popularity: 69, price: "129.99", imageString: "shop_11.jpg", category: "men", description: "jacket is product 4"},
+                            {id: 5, company: "5", title: "Skirt", popularity: 88, price: "16.99", imageString: "shop_12.jpg", category: "kids", description: "skirt is product 5"}])
 
 ProductVariant.destroy_all
 product_variants = ProductVariant.create([  {product_id: 1, colour: "Red", size: "s", quantity: 5},
@@ -39,4 +39,5 @@ product_variants = ProductVariant.create([  {product_id: 1, colour: "Red", size:
                                             {product_id: 5, colour: "Green", size: "l", quantity: 9},
                                             {product_id: 5, colour: "Red", size: "s", quantity: 1}])
                                             
-    
+    User.destroy_all
+    User.create({id: 1, firstName: "RAD", lastName: "RAD", email: "rad2021rmit@gmail.com", password: "Rails2021", password_confirmation: "Rails2021"})
