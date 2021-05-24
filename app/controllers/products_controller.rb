@@ -39,6 +39,7 @@ class ProductsController < ApplicationController
   def save
     if (cookies[:savedList])
         cookies[:savedList] += " " + params[:id]
+        c
     else
         cookies[:savedList] = params[:id]
     end
@@ -50,6 +51,8 @@ class ProductsController < ApplicationController
       list = cookies[:savedList].split(" ")
       list.delete(params[:id])
       cookies[:savedList] = list.join(" ")
+      product = Product.find(params[:id])
+        product.decreasePopularity
     set_product
     redirect_back(fallback_location: root_path)
     
@@ -116,21 +119,21 @@ class ProductsController < ApplicationController
   
   def allWomen
     @category = "Women"
-    @products = Product.where(category: "Women")
+    @products = Product.where(category: "women")
     render "products/index"
   end
   
   def allMen
     @category = "Men"
 
-    @products = Product.where(category: "Men")
+    @products = Product.where(category: "men")
     render "products/index"
   end
   
   def allKids
     @category = "Kids"
 
-    @products = Product.where(category: "Kids")
+    @products = Product.where(category: "kids")
     render "products/index"
   end
   

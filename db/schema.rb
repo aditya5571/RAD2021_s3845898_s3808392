@@ -31,12 +31,6 @@ ActiveRecord::Schema.define(version: 2021_05_22_081750) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "colours", force: :cascade do |t|
-    t.string "colour_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "product_variants", force: :cascade do |t|
     t.integer "product_id"
     t.string "colour"
@@ -49,19 +43,13 @@ ActiveRecord::Schema.define(version: 2021_05_22_081750) do
   create_table "products", force: :cascade do |t|
     t.string "company"
     t.string "title"
-    t.string "size"
+    t.integer "popularity"
     t.decimal "price"
     t.string "imageString"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
     t.string "description"
-  end
-
-  create_table "sizes", force: :cascade do |t|
-    t.string "size_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

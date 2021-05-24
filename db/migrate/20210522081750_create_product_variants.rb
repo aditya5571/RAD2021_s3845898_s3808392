@@ -5,7 +5,6 @@ class CreateProductVariants < ActiveRecord::Migration[5.2]
       t.string :colour
       t.string :size
       t.integer :quantity
-
       t.timestamps
     end
   end

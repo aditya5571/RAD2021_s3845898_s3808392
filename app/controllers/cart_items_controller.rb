@@ -6,7 +6,7 @@ class CartItemsController < ApplicationController
         current_cart = Cart.find_by(user_id: session[:current_user])
         
         if current_cart.products.include?(selected_product)
-            redirect_to "/products/"+params[:product_id]
+            redirect_to "/products/"+params[:product_id], notice: "Already in Cart"
         else
             @cart_item = CartItem.new
             @cart_item.cart = current_cart
@@ -16,6 +16,8 @@ class CartItemsController < ApplicationController
 
             @cart_item.quantity = params[:quantity]
             @cart_item.save
+            product = Product.find(params[:product_id])
+            product.increasePopularity
             redirect_to "/cart"
         end
     else
@@ -28,7 +30,11 @@ end
 
 def destroy
     @cart_item = CartItem.find(params[:id])
+    product = Product.find(@cart_item.product_id)
+    binding.pry
+    product.decreasePopularity
     @cart_item.destroy
+    
     redirect_to "/cart"
 end
 
