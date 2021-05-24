@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get "/newins", to: "products#allNewIns"
   get "/men", to: "products#allMen"
   get "/women", to: "products#allWomen"
-  get "/kids", to: "products#llKids"
+  get "/kids", to: "products#allKids"
   
   post "products/:id", to: "products#editList" 
   
